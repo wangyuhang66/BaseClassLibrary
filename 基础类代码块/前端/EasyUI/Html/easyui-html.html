@@ -1,0 +1,59 @@
+@section scripts{
+<script src="@Url.Content(" ")" type="text/javascript"></script>
+} @* 搜索框*@
+<div id="main">
+    <div class="frame-top">
+        时间：
+        <input id="startTime" type="text" class="easyui-datebox" value="@DateTime.Now.ToString(" yyyy-MM-dd ")" style="width:110px;" /> 至
+        <input id="endTime" type="text" class="easyui-datebox" value="@DateTime.Now.ToString(" yyyy-MM-dd ")" style="width:110px;" /> 用户邮箱： 要搜索的内容：
+        <input class="searchbox" type="text" name="key" value="" data-toggle="enter" data-target="#main [data-act='search']" /> 查询条件:
+
+        <select name="TopicID">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+        </select> 搜索按钮：
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-search" data-act="search">&nbsp;搜索&nbsp;</a>
+    </div>
+
+    绑定数据：
+    <div class="frame-list">
+        <table id=""></table>
+    </div>
+</div>
+
+弹出框
+<div id="">
+    <div class="popinner">
+        <input type="hidden" name="Id" value="" />
+        <table class="frame-main">
+            <tr class="line">
+                <td class="title"></td>
+                <td class="content"><input name="" value="" /></td>
+            </tr>
+            <tr class="line">
+                <td class="title"></td>
+                <td class="content"><input name="" value="" /></td>
+            </tr>
+            <tr class="line">
+                <td class="title"></td>
+                <td class="content"><input name="" value="" /></td>
+            </tr>
+        </table>
+        <div class="actionbar-full">
+            <a href="javascript:void(0)" data-act="cancel" class="easyui-linkbutton" iconcls="icon-back">取消</a>
+            <a href="javascript:void(0)" data-act="save" class="easyui-linkbutton" iconcls="icon-ok">保存</a>
+        </div>
+    </div>
+</div>
+
+
+
+<tr class="line">
+    <td class="title" style="width:350px;padding-left:40px;">
+        开始时间:<input id="StartTime" type="text" class="easyui-datetimebox" style="width:250px;">
+    </td>
+    <td class="title" style="width: 350px;padding-left:50px;">
+        结束时间:<input id="EndTime" type="text" class="easyui-datetimebox" style="width:250px;">
+    </td>
+</tr>

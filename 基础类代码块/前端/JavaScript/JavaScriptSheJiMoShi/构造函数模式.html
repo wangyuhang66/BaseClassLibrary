@@ -1,0 +1,95 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    //1.用于创建特定类型得对象
+    //2.注意命名
+    //3.js开发得时候写单引号
+    //4.js里构造函数比较特殊得地方 new
+    //5.其他语言里 比如PHP 实现 有一个关键字 A
+    //6.zaomen 就是构造函数 又充当了累的概念
+
+    //this instanceof 指定父类'
+
+    function zaomen(huawen) {
+        if (!(this instanceof zaomen)) {
+            return new zaomen();
+        };
+
+        var _huawen = '普通';
+        if (huawen) {
+            _huawen = huawen；
+        }
+
+        this.suo = '普通';
+        this.huawen = _huawen;
+        this.create = function() {
+            return '[锁头]' + this.suo + '[花纹]' + this.huawen;
+        }
+    }
+
+    var xiaozhang = zaomen();
+    alert('xiaozhang' + xiaozhang.create());
+
+    var xiaoli = new zaomen('绚丽');
+    alert('xiaoli' + xiaozhang.create());
+</script>
+
+
+<!--构造函数与单例模式结合-->
+<meta charset="utf-8">
+<script type="text/javascript">
+    //1.用于创建特定类型得对象
+    //2.注意命名
+    //3.js开发得时候写单引号
+    //4.js里构造函数比较特殊得地方 new
+    //5.其他语言里 比如PHP 实现 有一个关键字 A
+    //6.zaomen 就是构造函数 又充当了累的概念
+
+    //this instanceof 指定父类'
+
+    var AA = {
+        function: zaomen(huawen) {
+            if (!(this instanceof zaomen)) {
+                return new zaomen();
+            };
+
+            var _huawen = '普通';
+            if (huawen) {
+                _huawen = huawen；
+            }
+
+            this.suo = '普通';
+            this.huawen = _huawen;
+            this.create = function() {
+                return '[锁头]' + this.suo + '[花纹]' + this.huawen;
+            }
+
+        }
+    };
+
+    var BB = {
+        function: zaomen(huawen) {
+            if (!(this instanceof zaomen)) {
+                return new zaomen();
+            };
+
+            var _huawen = '普通';
+            if (huawen) {
+                _huawen = huawen；
+            }
+
+            this.suo = '普通';
+            this.huawen = _huawen;
+            this.create = function() {
+                return '[锁头]' + this.suo + '[花纹]' + this.huawen;
+            }
+
+        }
+    };
+
+
+    var xiaozhang = new AA.zaomen();
+    alert('xiaozhang' + xiaozhang.create());
+
+    var xiaoli = new BB.zaomen('绚丽');
+    alert('xiaoli' + xiaozhang.create());
+</script>

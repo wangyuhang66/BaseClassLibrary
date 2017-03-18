@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>easyui-Layout</title>
+    <link type="text/css" href="@Url.Content(" ~/Content/default/easyui.css ")" rel="stylesheet">
+    <link type="text/css" href="@Url.Content(" ~/Content/icon.css ")" rel="stylesheet">
+    <link type="text/css" href="@Url.Content(" ~/Content/site.css?v1.2 ")" rel="stylesheet"> @* 判断权限*@ @{ int[] purview = CurrentUser.GetCurrentUserPurview().Select(t => int.Parse(t.ToString())).ToArray(); int purvieIdx = CurrentUser.GetPurviewIdx(); } @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <div class="content_top">
+        @*
+        <marquee scrollamount="5" direction="alternate">朗播网后台管理系统</marquee>*@
+        <div class="logoff">
+            <a href="/Home/Login">退出登录</a>
+        </div>
+    </div>
+    <div class="easyui-layout">
+        <div id="layoutwest" region="west" title="系统菜单" style="width: 200px;">
+
+            <div class="easyui-accordion functioninner" data-options="multiple:true" style="overflow:hidden;">
+
+                @if (purview[19] == 1) {
+                <div title="权限管理" data-options="collapsed:@(purvieIdx==19?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/PurviewManagement/UserPurview/PurviewMng">用户权限</a></li>
+                    </ul>
+                </div>
+                } @if (purview[7] == 1) {
+                <div title="系统统计" data-options="collapsed:@(purvieIdx==7?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/StatisticalSystem/PaymentHistory/Index">购买统计</a></li>
+                        <li class="nav"><a href="/StatisticalSystem/CourseEnrolment/Index">课程报名统计</a></li>
+                    </ul>
+                </div>
+                } @if (purview[0] == 1) {
+                <div title="教务管理" data-options="collapsed:@(purvieIdx==0?" false ":"true ")">
+                    <ul>
+                        <li class=" nav"><a href="/OnlineCourse/CourseType/CourseTypeMng">课程类型</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Course/CourseMng">课程</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Course/CourseItemMng">课程项</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Course/CourseCommentMng">课程评论</a></li>
+                        <li class="nav"><a href="/Maintain/WordBook/Reset">词汇书重置</a></li>
+                        <li class="nav"><a href="/OnlineCourse/FreeLecture/LectureMng">大讲堂</a></li>
+                        <li class="nav"><a href="/OnlineCourse/FreeLecture/LectureCommentMng">讲座评论</a></li>
+                        <li class="nav"><a href="/OnlineCourse/RecordedCourse/Index">录播课</a></li>
+                        <li class="nav"><a href="/OnlineCourse/ApplySample/Index">申请试听</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Course/TPOLessonMng">TPO 精讲</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Course/MiniShowMng">Mini Show</a></li>
+                        <li class="nav"><a href="/SystemUser/Teacher/Index">老师信息</a></li>
+                        <li class="nav"><a href="/OnlineCourse/Assessment/TeacherAssessmentMng">老师评价</a></li>
+                    </ul>
+                </div>
+                } @if (purview[10] == 1) {
+                <div title="运营管理" data-options="collapsed:@(purvieIdx==10?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/SystemUser/SeeUser/UserStatisticsMng">用户登录注册统计</a></li>
+                        <li class="nav"><a href="/SysSetting/Coupon/Index">优惠码</a></li>
+                        <li class="nav"><a href="/SysSetting/CourseCoupon/CourseCouponMng">课程优惠</a></li>
+                        <li class="nav"><a href="/SysSetting/CourseCoupon/CourseCouponStatisticsMng">课程优惠统计</a></li>
+                        <li class="nav"><a href="/SysSetting/Anniversary/LotteryMng">抽奖活动</a></li>
+                        <li class="nav"><a href="/SysSetting/Anniversary/Index">周年庆活动统计</a></li>
+                        <li class="nav"><a href="/Activity/Promise/Index">送鼠标垫活动统计</a></li>
+                        <li class="nav"><a href="/Activity/CampusInvite/Index">校园大使</a></li>
+                        <li class="nav"><a href="/Activity/QQ/JoinGroupMng">QQ 群统计</a></li>
+                        <li class="nav"><a href="/SysSetting/Coupon/WordActivatedCode">词汇书激活</a></li>
+                        <li class="nav"><a href="/Verbal/GREBeta/Index">GRE 填空</a></li>
+                        <li class="nav"><a href="/BaiduZhidao/Question/">百度知道问题推送</a></li>
+                    </ul>
+                </div>
+                } @if (purview[1] == 1) {
+                <div title="网站配置管理" data-options="collapsed:@(purvieIdx==1?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/CourseConfigData/StudentDynamic/Practice">学习动态</a></li>
+                        <li class="nav"><a href="/CourseConfigData/StudentDynamic/Transcripts">晒成绩</a></li>
+                        <li class="nav"><a href="/PromisePoolMng/MessagePool/SysTopMessageMng">首页系统消息置顶</a></li>
+                        <li class="nav"><a href="/PromisePoolMng/MessagePool/UserTopMessageMng">首页用户消息置顶</a></li>
+                        <li class="nav"><a href="/Material/Banner/BannerMng">欢迎页轮播图</a></li>
+                        <li class="nav"><a href="/LangBo/ScoreOutline/ScoreOutlineMng">欢迎页报分提纲</a></li>
+                        <li class="nav"><a href="/Langbo/HotActivity/GroupActivityMng">小组活动</a></li>
+                        <li class="nav"><a href="/Langbo/HRRecruit/HRRecruitMng">招聘页</a></li>
+                        <li class="nav"><a href="/SysSetting/SysTest/QQKFTest">QQ客服测试</a></li>
+                    </ul>
+                </div>
+                } @if (purview[11] == 1) {
+                <div title="社区管理" data-options="collapsed:@(purvieIdx==11?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/Community/Topic/TopicAdminMng">社区管理员</a></li>
+                        <li class="nav"><a href="/Community/Topic/TopicTeacherMng">社区老师管理</a></li>
+                        <li class="nav"><a href="/Community/Topic/TopicCategoryMng">小组类别管理</a></li>
+                        <li class="nav"><a href="/Community/Topic/TopicMng">小组管理</a></li>
+                        <li class="nav"><a href="/Community/Topic/InformationTopicMng">资讯小组管理</a></li>
+                        <li class="nav"><a href="/Community/Topic/TopicApplyMng">小组成员审批</a></li>
+                        <li class="nav"><a href="/Community/Topic/TopicMemberMng">小组成员管理</a></li>
+                        <li class="nav"><a href="/Community/Thread/ThreadMng">帖子管理</a></li>
+                        <li class="nav"><a href="/Community/Thread/TagMng">标签管理</a></li>
+                        <li class="nav"><a href="/Community/Thread/ReplyMng">评论管理</a></li>
+                        <li class="nav"><a href="/Community/Topic/RecommendCoursesMng">课程推荐</a></li>
+                        <li class="nav"><a href="/Community/Topic/RecommendTopicMng">小组推荐</a></li>
+                        <li class="nav"><a href="/Community/Thread/ReloadRedisThreadMng">重新加载 Redis 帖子</a></li>
+                        <li class="nav"><a href="/Community/Topic/Upgrade">数据处理</a></li>
+                        <li class="nav"><a href="/Community/Thread/CallScoreMng">报分营数据导入</a></li>
+                    </ul>
+                </div>
+                } @if (purview[6] == 1) {
+                <div title="资讯中心" data-options="collapsed:@(purvieIdx==6?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/InformationCenter/TeacherView/Index">名师指导</a></li>
+                        <li class="nav"><a href="/InformationCenter/UserExp/Index">学员经验</a></li>
+                        <li class="nav"><a href="/InformationCenter/News/Index">考试资讯</a></li>
+                        <li class="nav"><a href="/InformationCenter/Download/Index">资料下载</a></li>
+                        <li class="nav"><a href="/InformationCenter/InformationConfig/BannerMng">图文推荐</a></li>
+                        <li class="nav"><a href="/InformationCenter/InformationConfig/PopularityTeacherMng">人气名师</a></li>
+                        <li class="nav"><a href="/InformationCenter/InformationConfig/RecommendArticlesMng">推荐文章</a></li>
+                    </ul>
+                </div>
+                } @if (purview[9] == 1 || purview[8] == 1) {
+                <div title="消息通知" data-options="collapsed:@((purvieIdx==9 || purvieIdx==8)?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/LangBo/Notify/SmsNotify">短信通知</a></li>
+                        <li class="nav"><a href="/LangBo/Notify/SmsTemplet">短信模板</a></li>
+                        <li class="nav"><a href="/LangBo/Notify/EmailNotify">邮件通知</a></li>
+                    </ul>
+                </div>
+                } @if (purview[2] == 1) {
+                <div title="教学管理" data-options="collapsed:@(purvieIdx==2?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/OnlinePractice/PracticeConfig/Index">在线练习设置</a></li>
+                        <li class="nav"><a href="/OnlinePractice/PracticeExecute/Index">在线练习讲评</a></li>
+                    </ul>
+                </div>
+                } @if (purview[3] == 1) {
+                <div title="教研数据维护" data-options="collapsed:@(purvieIdx==3?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/Maintain/Sentence/ReadingSentenceMng">句子分析主句维护</a></li>
+                        <li class="nav"><a href="/Maintain/Sentence/SentenceClauseMng">句子分析子句维护</a></li>
+                        <li class="nav"><a href="/Maintain/Sentence/SenetenceSearchMng">句子分析搜索</a></li>
+                        <li class="nav"><a href="/Maintain/Sentence/SenetenceExportMng">句子精讲导出CSV</a></li>
+                        <li class="nav"><a href="/Maintain/WordInteract/WordInteractMng">单词互动陪练课数据维护</a></li>
+                        <li class="nav"><a href="/Maintain/Sentence/SentenceSchemaMng">模仿造句</a></li>
+                        <li class="nav"><a href="/Maintain/Sentence/ListeningSentenceMng">句子听力</a></li>
+                        <li class="nav"><a href="/Maintain/Stress/Index">重音标记</a></li>
+                        <li class="nav"><a href="/Maintain/WordBook/Index">词汇书</a></li>
+                        <li class="nav"><a href="/Maintain/Grammar/Index">语法</a></li>
+                        <li class="nav"><a href="/Maintain/ArticleReading/Index">阅读笔记</a></li>
+                        <li class="nav"><a href="/Sales/Client/TeacherClient">客户列表</a></li>
+                    </ul>
+                </div>
+                } @if (purview[3] == 1) {
+                <div title="口语管理" data-options="collapsed:@(purvieIdx==3?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/Speaking/Speaking/Index">口语数据维护</a></li>
+                        <li class="nav"><a href="/Speaking/Speaking/DailyTaskMng">每日任务维护</a></li>
+                    </ul>
+                </div>
+                } @if (purview[12] == 1) {
+                <div title="销售管理" data-options="collapsed:@(purvieIdx==12?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/Sales/SalesMan/Index">销售人员管理</a></li>
+                    </ul>
+                </div>
+                } @if (purview[13] == 1) {
+                <div title="客户管理" data-options="collapsed:@(purvieIdx==13?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/Sales/Client/Index">客户管理</a></li>
+                    </ul>
+                </div>
+                }
+                <div title="新增客户" data-options="collapsed:true">
+                    <ul>
+                        <li class="nav"><a href="/Sales/Client/NewClient">新增客户</a></li>
+                    </ul>
+                </div>
+                @if (purview[4] == 1) {
+                <div title="用户信息" data-options="collapsed:@(purvieIdx==4?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/SystemUser/SeeUser/UserMng">用户查询</a></li>
+                        <li class="nav"><a href="/SystemUser/SeeUser/UserServiceMng">用户服务</a></li>
+                        <li class="nav"><a href="/SystemUser/SeeUser/UserPlanMng">用户计划</a></li>
+                        <li class="nav"><a href="/SystemUser/SeeUser/UserPaymentHistoryMng">购买记录</a></li>
+                    </ul>
+                </div>
+                } @if (purview[5] == 1) {
+                <div title="用户管理" data-options="collapsed:@(purvieIdx==5?" false ":"true ")">
+                    <ul>
+                        <li class="nav"><a href="/SystemUser/UserService/UserMng">用户查询</a></li>
+                        <li class="nav"><a href="/SystemUser/UserCourse/UserCourseMng">用户课程</a></li>
+                        <li class="nav"><a href="/SystemUser/UserService/AutoRegisterMng">自动注册</a></li>
+                        <li class="nav"><a href="/SystemUser/UserService/UserServiceMng">用户服务</a></li>
+                        <li class="nav"><a href="/SystemUser/UserPlan/UserPlanMng">用户计划</a></li>
+                        <li class="nav"><a href="/SystemUser/UserPaymentHistory/UserPaymentHistoryMng">购买记录</a></li>
+                        <li class="nav"><a href="/SystemUser/UserPaymentHistory/NewUserPaymentHistoryMng">GRE购买记录</a></li>
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div id="layoutcenter" region="center" title="功能操作区" style="width: 750px;">
+            @RenderBody()
+        </div>
+    </div>
+
+</body>
+
+</html>

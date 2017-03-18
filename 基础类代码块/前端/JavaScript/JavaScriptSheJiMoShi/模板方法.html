@@ -1,0 +1,28 @@
+<meta name="" content="" charset="utf-8">
+
+<script type="text/javascript">
+    fucntion shangdi() {}
+    shangdi.prototype.zaoren_yangjing = function() {
+        console.log('眼睛');
+    }
+    shangdi.prototype.zaoren_bizi = function() {
+        console.log('鼻子');
+    }
+    shangdi.prototype.zaoren_zuiba = function() {
+        console.log('嘴巴');
+    }
+
+    shangdi.prototype.aihao = function() {
+        throw new Error('爱好自己去探索');
+    }
+
+    function xiaoming() {
+        console.log('小明');
+        shangdi.call(this);
+    }
+
+    xiaoming.prototype = new shangdi();
+    xiangming.prototype.aihao = function() {
+        console.log('小明爱讲笑话');
+    }
+</script>

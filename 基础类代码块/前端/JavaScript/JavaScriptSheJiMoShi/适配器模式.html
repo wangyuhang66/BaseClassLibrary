@@ -1,0 +1,40 @@
+<meta name="" content="" charset="utf-8">
+<script type="text/javascript">
+    var aa = {
+        test: function() {
+
+        };
+
+        go: function() {
+
+        }
+    }
+
+    aa.test();
+
+    function aa() {
+        this.test = function() {
+            console.log('我是新gogo');
+        }
+    }
+    aa.prototype.gogo = function() {
+        console.log('我是新gogo');
+    }
+
+    function shipeiqi() {
+        var aa = new pp;
+        var aa = {
+            test: function() {
+                s.test();
+            }
+            go: function() {
+                s.gogo();
+            }
+        }
+        return aa;
+    }
+
+    var aa = shipeiqi();
+    aa.test();
+    aa.go();
+</script>

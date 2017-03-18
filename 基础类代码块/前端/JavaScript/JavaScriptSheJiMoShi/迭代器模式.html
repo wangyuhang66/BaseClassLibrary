@@ -1,0 +1,28 @@
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript">
+    var arr = ["test", 2, "3", "gogo"];
+    var diedai = (function() {
+        var length = arr.length,
+            index = 0;
+        return {
+            hasNext: function() {
+                return index < length;
+            },
+            next: function() {
+                var data = arr[index];
+                index = index + 1;
+                return data;
+            },
+            reset: function() {
+                index = 0;
+            }
+        };
+    })();
+    while (diedai.hasNext()) {
+        console.log(diedai.next());
+    }
+    $.each(arr, function(index, val) {
+        console.log(index);
+        console.log(val);
+    });
+</script>

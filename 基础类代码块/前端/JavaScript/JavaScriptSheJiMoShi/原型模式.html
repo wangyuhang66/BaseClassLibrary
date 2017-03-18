@@ -1,0 +1,28 @@
+<meta name="" content="" charset="utf-8">
+<script type="text/javascript">
+    var myobj = {
+        str: 'mystring',
+        num: 1,
+        myarr: [30, {
+            arrgo: 'i am arr'
+        }],
+        myobj: {
+            innnerobj: {
+                test: 25
+            },
+            innerstr: 'myobjInnerstr'
+        }
+    };
+
+    function clane(obj) {
+        var ret = {};
+        for (k in obj) {
+            ret[k] = obj[k];
+        };
+        return ret;
+    }
+
+    var result = clane(myobj);
+    result.myobj.innerstr = 'outer';
+    console.log(result);
+</script>

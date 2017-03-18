@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    var $input = $('input').val();
+    var val = {
+        isEmpty: function(canshu1) {
+            return false;
+        };
+
+        isTel: function(canshu2) {
+            return true;
+        }
+    };
+
+    var isE = val.isEmpty($input);
+    var isTel = val.isEmpty($input);
+    if (!ise && isTel) {
+        alert('通过审核！！！');
+    };
+
+    //$.fn.val
+    $.input.val({
+        isEmpty: false,
+        isTel: true
+    })
+</script>
