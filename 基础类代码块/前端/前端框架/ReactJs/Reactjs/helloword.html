@@ -1,0 +1,18 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+    <div id="app"> </div>
+    <script type='text/jsx'>
+    var MessageBox = React.createClass({
+alertMe:
+  function() { alert('你刚才点了我一下。。。。'); }
+  , render : function() {
+    return (<h1 onClick = {this.alertMe}> 你好世界！！！</ h1>)
+  }
+；</ script></ body></ html>
