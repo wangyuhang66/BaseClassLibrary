@@ -1,0 +1,3 @@
+--在 SQL 查询中：from 后最多可以跟多少张表或视图：256 
+--在 SQL 语句中出现 Order by,查询时，先排序，后取 
+--在 SQL 中，一个字段的最大容量是 8000，而对于 nvarchar(4000),由于 nvarchar 是 Unicode 码。   

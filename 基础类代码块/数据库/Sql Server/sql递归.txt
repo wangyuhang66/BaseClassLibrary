@@ -1,0 +1,17 @@
+ with t as
+(
+    select CategoryId , Name , pid = ParentCategoryId , path = cast(name as nvarchar(100)) from Shop_Categories A
+    union all
+    select t.CategoryId , t.Name , pid = Shop_Categories.ParentCategoryId , path = cast(Shop_Categories.Name as nvarchar(100)) from t join Shop_Categories on Shop_Categories.CategoryId = t.pid
+)
+select CategoryId ,
+       Name ,
+       [ParentCategory] = reverse(substring(reverse(path1) , charindex(',' , reverse(path1)) + 1 , len(path1)))
+	   from
+(
+select CategoryId , Name ,
+       path1 = STUFF((SELECT '-' + path FROM t WHERE CategoryId = Shop_Categories.CategoryId order by t.CategoryId , t.pid FOR XML PATH('')) , 1 , 1 , '')
+from Shop_Categories where CategoryId in (4,5,7,10,15)
+group by CategoryId , Name
+) m
+order by CategoryId
