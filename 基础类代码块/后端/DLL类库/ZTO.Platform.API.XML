@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZTO.Platform.API</name>
+    </assembly>
+    <members>
+        <member name="T:ZTO.Platform.API.Gateway.Net.AbsNetGatewayRequest`1">
+            <summary>
+            .NET网关请求包
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.AbsNetGatewayRequest`1.Text">
+            <summary>
+            调用方自定义请求时传入，调用完成后返回
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.Net.AbsNetGatewayRequest`1.Auth(ZTO.Platform.API.IApiClient)">
+            <summary>
+            创建Net网关的契约
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="T:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract">
+            <summary>
+            由.NET平台网关统一Auth方式
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract._appID">
+            <summary>
+            颁发的账号
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract._appSecret">
+            <summary>
+            颁发的密码
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract._appNotic">
+            <summary>
+            自定义的随机码（需要在请求接口时，传入）
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract.GatewayUrl">
+            <summary>
+            网关地址
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract.#ctor(System.String,System.String)">
+            <summary>
+            由.NET平台网关统一Auth方式
+            </summary>
+            <param name="appID">颁发的账号</param>
+            <param name="appSecret">颁发的密码</param>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract.#ctor(System.String,System.String,System.String)">
+            <summary>
+            由.NET平台网关统一Auth方式
+            </summary>
+            <param name="appID">颁发的账号</param>
+            <param name="appSecret">颁发的密码</param>
+            <param name="appNotic">加强型随机密码（可不填）</param>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract.Create">
+            <summary>
+            根据规则，生成契约
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.Net.NetGatewayAuthContract.Md5(System.String)">
+            <summary>
+            MD5加密程序（32位小写）
+            </summary>
+            <param name="str">需要加密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:ZTO.Platform.API.Gateway.Net.NetGatewayResponse">
+            <summary>
+            默认的响应基类
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.NetGatewayResponse.Status">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.NetGatewayResponse.ResultValue">
+            <summary>
+            返回值
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.NetGatewayResponse.Text">
+            <summary>
+            调用方自定义请求时传入，调用完成后返回
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.Net.NetGatewayResponse.Data">
+            <summary>
+            不同接口返回的值
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.Gateway.IAuthContract">
+            <summary>
+            API接口契约生成规则
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.Gateway.IAuthContract.Create">
+            <summary>
+            根据规则，生成契约
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Gateway.IAuthContract.GatewayUrl">
+            <summary>
+            网关地址
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.IApiClient">
+            <summary>
+            中通API的接口调用客户端
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.IApiClient.AppID">
+            <summary> 颁发的账号 </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.IApiClient.AppSecret">
+            <summary> 颁发的密码 </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.ParamValidator">
+            <summary>
+            请求验证器。
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.ParamValidator.ErrCodeParamMissing">
+            <summary>
+            请求参数为空的错误状态码
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.ParamValidator.ErrCodeParamInvalid">
+            <summary>
+            请求参数无效的错误状态码
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.ParamValidator.ErrMsgParamMissing">
+            <summary>
+            请求参数为空的提示语
+            </summary>
+        </member>
+        <member name="F:ZTO.Platform.API.ParamValidator.ErrMsgParamInvalid">
+            <summary>
+            请求参数无效的提示语
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.Required(System.String,System.Object)">
+            <summary>
+            验证参数是否为空。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.MaxLength(System.String,System.String,System.Int32)">
+            <summary>
+            验证字符串参数的最大长度。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <param name="maxLength">最大长度</param>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.MaxListSize(System.String,System.String,System.Int32)">
+            <summary>
+            验证以逗号分隔的字符串参数的最大列表长度。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <param name="maxSize">最大列表长度</param>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.MinLength(System.String,System.String,System.Int32)">
+            <summary>
+            验证字符串参数的最小长度。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <param name="minLength">最小长度</param>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.MaxValue(System.String,System.Nullable{System.Int64},System.Int64)">
+            <summary>
+            验证数字参数的最大值。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <param name="maxValue">最大值</param>
+        </member>
+        <member name="M:ZTO.Platform.API.ParamValidator.MinValue(System.String,System.Nullable{System.Int64},System.Int64)">
+            <summary>
+            验证数字参数的最小值。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <param name="minValue">最小值</param>
+        </member>
+        <member name="T:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest">
+            <summary>
+            个人发送短信（根据网点设置的拆分状态决定扣个人还是网点）
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.Mobiles">
+            <summary>
+            手机号，多个按逗号分割（如：18688895206）
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.Message">
+            <summary>
+            短信内容（64个字，计1条）
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.Hotline">
+            <summary>
+            是否启用末尾热线广告（默认开启）
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.IsConfidential">
+            <summary>
+            是否为保密信息（默认关闭）
+            开启后，不会将短信内容存入数据库，以*号代替
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.CustomerName">
+            <summary>
+            接收消息的客户名称
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsSendUserRequest.UserCode">
+            <summary>
+            当值发短信的业务员编号(扣费对象），如：02100.2525
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.Server.Sms.Request.SmsAccountRemainingRequest">
+            <summary>
+            获取短信余额+信用
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.Server.Sms.Request.SmsAccountRemainingRequest.UserCode">
+            <summary>
+            业务员编号，如：02100.2525
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.Server.Sms.Request.SmsTimeServerRequest">
+            <summary>
+            获取短信服务器时间
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.AbsApiRequest`1">
+            <summary>
+            所有API的请求基类
+            </summary>
+            <typeparam name="T">响应实体</typeparam>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.ApiName">
+            <summary>
+            请求的路由方法名称
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.AbsApiRequest`1.AuthContract">
+            <summary>
+            API接口契约生成规则
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.Auth(ZTO.Platform.API.IApiClient)">
+            <summary>
+            API接口契约生成规则
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.Validate">
+            <summary>
+            验证参数
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.BuilderBodyParameters">
+            <summary>
+            生成主体请求参数
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.GetBodyParameters">
+            <summary>
+            生成主体请求参数
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.BuildeHeaderParameters">
+            <summary>
+            生成头部请求参数
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.GetHeaderParameters">
+            <summary>
+            生成主体请求参数
+            </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.AbsApiRequest`1.GetParametersString(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            将字典类型的参数，转换成String类型的参数
+            </summary>
+            <param name="param">KeyValue形式的参数</param>
+        </member>
+        <member name="M:ZTO.Platform.API.SmsApiExtend.SmsApi``1(ZTO.Platform.API.ZtoApiClient,ZTO.Platform.API.Gateway.Net.AbsNetGatewayRequest{``0})">
+            <summary>
+            短信API
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="client"></param>
+            <param name="request">根据接口功能，传入对应的请求实体</param>
+        </member>
+        <member name="M:ZTO.Platform.API.SmsApiExtend.Post(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            以Post方式请求远程URL
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.AbsApiResponse">
+            <summary>
+            API响应基类
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.AbsApiResponse.StatusCode">
+            <summary>
+            返回状态代码
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.AbsApiResponse.StatusMessage">
+            <summary>
+            返回消息内容
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.AbsApiResponse.Body">
+            <summary>
+            响应原始内容
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.ZtoParamException">
+            <summary>
+                参数效验异常。
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.ZtoParamException.StatusCode">
+            <summary>
+            返回状态代码
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.ZtoParamException.StatusMessage">
+            <summary>
+            返回消息内容
+            </summary>
+        </member>
+        <member name="T:ZTO.Platform.API.ZtoApiClient">
+            <summary>
+            中通API的接口调用客户端
+            </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.ZtoApiClient.AppID">
+            <summary> 颁发的账号 </summary>
+        </member>
+        <member name="P:ZTO.Platform.API.ZtoApiClient.AppSecret">
+            <summary> 颁发的密码 </summary>
+        </member>
+        <member name="M:ZTO.Platform.API.ZtoApiClient.#ctor(System.String,System.String)">
+            <summary>
+            由.NET平台网关统一Auth方式
+            </summary>
+            <param name="appID">颁发的账号</param>
+            <param name="appSecret">颁发的密码</param>
+        </member>
+    </members>
+</doc>
