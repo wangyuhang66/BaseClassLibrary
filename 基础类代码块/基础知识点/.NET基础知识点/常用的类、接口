@@ -1,0 +1,6 @@
+常用的类：StreamReader、WebClient、Dictionary<K,V>、StringBuilder、SqlConnection、FileStream、File、Regex、List<T> 
+常用的接口：IDisposable、IEnumerable、IDbConnection、IComparable、ICollection、IList、IDictionary
+要出乎意料！不要仅仅完成任务！笔试不是高考！处处要显出牛！
+
+说出几个开源软件？VS code, MySQL、Linux、 Discuz、Apache、Paint.Net、Android、Chrome、Notepad++……
+开源项目有一些是开发包。开源软件指的是可以直接用的。Jquery、NPOI、ASP.Net MVC、Silverlight  Toolkit、AJAX toolkit、json.net

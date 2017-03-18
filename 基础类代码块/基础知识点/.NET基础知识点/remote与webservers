@@ -1,0 +1,1 @@
+Ws主要是可利用HTTP，穿透防火墙。而Remoting可以利用TCP/IP，二进制传送提高效率，remoting是.NET中用来跨越machine,process,appdomain进行方法调用的技术，对于在层结构的程序，就可以使用remoting技术来构建，它是分布应用的基础技术，相当于以前的DCOM，webservice是一种构建应用程序的变通模型，并能在所有支持internet网通讯的操作系统上实施。Webservice令基于组件的开发和web的结合达到最佳，基于组件的对象模型。

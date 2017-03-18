@@ -1,0 +1,29 @@
+﻿ 一个数组：1,1,2,3,5,8,13,21...+m，求第30位数是多少？用递归实现
+static int F(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    if (n == 2)
+    {
+        return 1;
+    }
+    return F(n - 2) + F(n - 1);
+}
+-------------------------------------------------------------------
+public class MainClass 
+{ 
+    public static void Main()   
+    { 
+        Console.WriteLine(Foo(30)); 
+    } 
+    public static int Foo(int i) 
+    { 
+        if (i <= 0) 
+            return 0; 
+        else if(i > 0 && i <= 2) 
+            return 1; 
+        else return Foo(i -1) + Foo(i - 2); 
+    } 
+} 

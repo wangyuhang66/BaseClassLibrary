@@ -1,0 +1,5 @@
+.Net一般指的是.Net Framework，提供了基础的.Net类，这些类可以被任何一种.Net编程语言调用，.Net Framework还提供了CLR、JIT、GC等基础功能。
+ASP.Net是.Net中用来进行Web开发的一种技术，ASP.Net的页面部分写在aspx 文件中，逻辑代码通常通过Code-behind的方式用C#、VB.Net等支持.Net的语言编写。
+C#是使用最广泛的支持.Net的编程语言。除了C#还有VB.Net、IronPython等。
+VisualStudio是微软提供的用来进行.Net开发的集成开发环境（IDE），使用VisualStudio可以简化很多工作，不用程序员直接调用csc.exe等命令行进行程序的编译，而且VisualStudio提供了代码自动完成、代码高亮等功能方便开发。
+除了VisualStudio，还有SharpDevelop、MonoDevelop等免费、开源的IDE，VisualStudio Express版这个免费版本

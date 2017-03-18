@@ -1,0 +1,151 @@
+优点：
+客户端不需要刷新整个页面就可以向服务器提交数据
+客户可以用更短的时间看到需要改变的数据
+服务器只需要处理单一的任务，而不需要生成整个页面
+AJAX的宗旨就是传递只需要处理的数据
+缺点：
+更多的处理放置在客户端，意味着将频繁的使用JavaScript进行开发
+页面的局部改变需要更精确的控制
+
+优势
+    （１）给用户带来流畅而友好的体验；
+	（２）无需客户端任何安装，即可被绝大多数浏览器所支持。
+２.劣势
+	（１）虽然AJAX用到的技术均已经比较成熟并经过标准化，但由于其涉及的技术太多，开发者仍需要大量的学习，对于某些比较复杂的客户端程序来讲，往往需要开发者对JS以及相关技术非常精通；
+	（２）每种浏览器中提供的DOM模型均有轻微的差异，所以在编写跨浏览器的客户端应用程序时往往会非常困难；
+	（３）由于大部分表示层以及少部分的业务逻辑均被移植到了客户端用JS实现，这就使客户端代码量急剧增多，但JS从语言层面上并没有完善的面向对象支持，这往往使客户端代码的质量无法得到保证；
+	（４）当前并没有非常成熟的用来开发、调试JS的IDE。
+==============================================================================================================================
+
+AJAX（Asynchronous JavaScript and XML）其实是多种技术的综合，包括 Javascript, XHTML和 CSS DOM XML 和 XSTL XMLHttpRequest。
+AJAX 采用异步交互过程.从而消除了网络交互过程中的处理—等待—处理—等待缺点. 并且可以更新网页的部分内容而不需要刷新整个页面。
+AJAX处理流程：
+1.创建XmlHttp对象xmlHttp,根据不同的浏览器来创建.
+如IE中使用ActiveXObject方式创建XmlHttp对象，其他浏览器如：Firefox、Opera等通过window.XMLHttpRequest来创建xmlhttp对象.
+<script language="javascript">
+    var xmlHttp; 
+    function createHttpRequest(){
+      if (window.ActiveXObject){
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+ }else if (window.XMLHttpRequest){
+    xmlHttp = new XMLHttpRequest();
+ }
+    } 
+</script>
+
+2.调用xmlHttp的方法open(发送方式,URL,varAsync,验证信息),输入发送的方式 GET或者POST,varAsync表示指定此请求是否为异步方式，
+默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数。
+function startRequest(){
+  createHttpRequest();
+  var url = "F:/simpleRequest.xml";
+  xmlHttp.open("GET",url,true);
+  xmlHttp.onreadystatechange=callback;
+  xmlHttp.send(null);
+ }
+
+3.调用xmlHttp的方法send(),发送信息.
+4.处理服务器返回的信息
+    当xmlHttp的readyState为4时,并且状态status为 200时，表示成功.
+    当status为404时,表404错误.
+    当status为500时,表500错误.
+onreadystatechange指定当readyState属性改变时的事件处理句柄，配合readyState使用。
+readyState的状态值     
+未初始化   ====0
+正在加载   ====1
+已加载     ====2
+交互中     ====3
+完成       ====4
+另外,还有silverlight,data entity,data service等.都不错的.
+
+局部刷新用
+UpdateProgress 
+是一个和 ASP.Net AJAX UpdatePanel 控件相协作，可以使得页面用户在
+UpdatePanel 向服务器提交请求的期间，出现相应的提示等待信息的 ASP.Net AJAX控件。
+Timer
+时间控制程序，一定时间间隔后自动触发某个操作。ValidatorCallout
+是一个 ASP.NET AJAX 控件，其可以增强 ASP.Net 的校验控件的提示显示效果    
+------------------------------------------------------------------------------------------------------------------
+
+关于Jquery傻白甜的ajax 
+ $.ajax({
+            type: "POST/GET/PUT/DELETE",
+            url: '',
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function(result) {
+                //成功
+            },
+            error: function(ex) {
+               //失败
+            }
+        });
+
+---------------------------------------------------------------------------------------------------------------------
+
+Promise来封装 原生ajax
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+fetch 直接封装：
+
+fetch(input, init).then(function(response) { ... });
+详情：
+https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalFetch/fetch
+参数
+
+input
+定义要获取的资源。这可能是：
+一个 USVString 字符串，包含要获取资源的 URL。
+一个 Request 对象。
+init 可选
+一个配置项对象，包括所有对请求的设置。可选的参数有：
+method: 请求使用的方法，如 GET、POST。
+headers: 请求的头信息，形式为 Headers 对象或 ByteString。
+body: 请求的 body 信息：可能是一个 Blob、BufferSource、FormData、URLSearchParams 或者 USVString 对象。注意 GET 或 HEAD 方法的请求不能包含 body 信息。
+mode: 请求的模式，如 cors、 no-cors 或者 same-origin。
+credentials: 请求的 credentials，如 omit、same-origin 或者 include。
+cache:  请求的 cache 模式: default, no-store, reload, no-cache, force-cache, or only-if-cached.
+返回值
+
+一个 Promise，resolve 时回传 Response 对象。
+
+示例
+在 Fetch Request 示例 (参见 Fetch Request live) 中，我们使用对应的构造器创建了一个新的 Request 对象，然后调用 fetch() 方法获取资源。因为我们是在请求一个图片，为了解析正常，我们对响应执行 Body.blob 来设置相应的 MIME 类型。然后创建一个 Object URL，并在 <img> 元素中把它显示出来。
+
+var myImage = document.querySelector('img');
+
+var myRequest = new Request('flowers.jpg');
+
+fetch(myRequest).then(function(response) {
+  return response.blob();
+}).then(function(response) {
+  var objectURL = URL.createObjectURL(response);
+  myImage.src = objectURL;
+});
+在 Fetch with init then Request 示例 (参见 Fetch Request init live) 中，我们做同样的操作，除了在调用 fetch() 时传入一个 init 对象：
+
+var myImage = document.querySelector('img');
+
+var myHeaders = new Headers();
+myHeaders.append('Content-Type', 'image/jpeg');
+
+var myInit = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+
+var myRequest = new Request('flowers.jpg');
+
+fetch(myRequest,myInit).then(function(response) {
+  ... 
+});
+你也可以传入同样的 init 对象到 Request 构造器，来实现同样的效果，如：
+
+var myRequest = new Request('flowers.jpg',myInit);
+
+=====================================================================================================================================
+总结：
+ajax的发展历程：
+    javascript  XMLHttpRequest -->Jquery傻白甜的 $.ajax({}) -->Promise来封装 原生ajax  -->fetch 直接封装对象

@@ -1,0 +1,16 @@
+﻿一种或几种实现方法： 1-2+3-4+……+m
+ int Num = this.TextBox1.Text.ToString() ;
+ int Sum = 0 ;
+ for (int i = 0 ; i < Num + 1 ; i++)
+ {
+    if((i%2) == 1)
+    {
+        Sum += i ;
+    }
+    else
+    {
+        Sum = Sum  - I ;
+    }
+ }
+ System.Console.WriteLine(Sum.ToString());
+ System.Console.ReadLine() ;
