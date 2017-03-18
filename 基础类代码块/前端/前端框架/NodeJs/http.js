@@ -1,0 +1,15 @@
+//调用http模块
+var http = require('http');
+
+var server = http.createServer();
+server.on('request', function(request, response) {
+    // 发送 HTTP 头部
+    // HTTP 状态值: 200 : OK
+    // 内容类型: text/plain
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+
+    // 发送响应数据 "Hello World ！"
+    response.end('Hello World !');
+}).listen(8000);
+
+console.log('Http server is started.');

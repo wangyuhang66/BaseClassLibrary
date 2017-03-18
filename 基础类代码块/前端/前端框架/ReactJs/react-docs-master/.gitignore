@@ -1,0 +1,9 @@
+react-docs.sublime-project
+react-docs.sublime-workspace
+_site
+Gemfile.lock
+.sass-cache
+downloads
+zh-old
+*.log
+.DS_Store
